@@ -144,6 +144,11 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     background-position: 0.5rem center;
 }
 
+.number_input.error {
+    border: 1.5px solid red;
+}
+
+
 .bill_input:focus, .number_input:focus {
     border: 1.5px solid var(--strong-cyan);
     outline: none;

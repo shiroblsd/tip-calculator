@@ -15,7 +15,7 @@ document.getElementById("customButton").addEventListener("click", function () {
     function applyTip() {
         let customTip = parseFloat(inputField.value);
         if (!isNaN(customTip) && customTip >= 0) {
-            setTip(customTip); // Обновляем tipPercent
+            setTip(customTip); // Обновляем глобальный tipPercent
             button.textContent = `${customTip}%`;
         } else {
             button.textContent = "Custom";
@@ -42,22 +42,19 @@ document.getElementById("customButton").addEventListener("click", function () {
 
 function calculate() {
     let bill = parseFloat(document.getElementById("bill").value);
-    let peopleCount = parseInt(document.getElementById("peopleCount").value);
+    let peopleInput = document.getElementById("peopleCount"); // Добавил объявление
+    let peopleCount = parseInt(peopleInput.value);
     let errorText = document.querySelector(".error_text");
 
-    if (isNaN(bill) || isNaN(peopleCount)) {
-        errorText.style.display = "block"; // Показать ошибку
-        return;
-    }
-
-    if (peopleCount <= 0) {
-        errorText.style.display = "block"; // Показать текст ошибки
+    if (isNaN(bill) || isNaN(peopleCount) || peopleCount <= 0) {
+        errorText.style.display = "block"; 
+        peopleInput.classList.add("error"); // Добавить красную границу
         return;
     } else {
-        errorText.style.display = "none"; // Скрыть текст ошибки
+        errorText.style.display = "none";
+        peopleInput.classList.remove("error"); // Убрать красную границу
     }
 
-    let tipPercent = 10; // Предположим, что значение чаевых фиксировано
     let tipAmount = (bill * tipPercent) / 100;
     let total = (bill + tipAmount) / peopleCount;
 
