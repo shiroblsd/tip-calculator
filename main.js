@@ -12,26 +12,48 @@ document.getElementById("customButton").addEventListener("click", function () {
     button.style.display = "none";
     inputField.focus();
 
-    inputField.addEventListener("blur", function handler() {
+    function applyTip() {
         let customTip = parseFloat(inputField.value);
         if (!isNaN(customTip) && customTip >= 0) {
-            tipPercent = customTip;
+            setTip(customTip); // Обновляем tipPercent
             button.textContent = `${customTip}%`;
         } else {
             button.textContent = "Custom";
         }
         inputField.style.display = "none";
         button.style.display = "inline-block";
-        inputField.removeEventListener("blur", handler);
-    }, { once: true });
+        button.focus();
+
+        // Удаляем обработчики
+        inputField.removeEventListener("blur", applyTip);
+        inputField.removeEventListener("keydown", enterHandler);
+    }
+
+    function enterHandler(event) {
+        if (event.key === "Enter") {
+            applyTip();
+            calculate(); // Пересчет суммы после изменения чаевых
+        }
+    }
+
+    inputField.addEventListener("blur", applyTip, { once: true });
+    inputField.addEventListener("keydown", enterHandler);
 });
 
 function calculate() {
     let bill = parseFloat(document.getElementById("bill").value);
     let peopleCount = parseInt(document.getElementById("peopleCount").value);
+    let errorText = document.querySelector(".error_text");
+    
 
     if (isNaN(bill) || isNaN(peopleCount) || peopleCount <= 0) {
         return;
+    }
+
+    if (peopleCount <= 0) {
+        errorText.style.display = "block"; // Показать текст ошибки
+    } else {
+        errorText.style.display = "none"; // Скрыть текст ошибки
     }
 
     let tipAmount = (bill * tipPercent) / 100;

@@ -57,9 +57,16 @@ body {
     margin-bottom: 2rem;
 }
 
-.main_text {
-    font-size: 0.8rem;
+.people_text, .main_text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 0.7rem;
     margin-bottom: 0.4rem;
+}
+
+.error_text {
+    color: red;
 }
 
 .first_column {
@@ -79,8 +86,13 @@ body {
     font-weight: 700;
 }
 
-.tip_button:hover, .tip_button:focus {
+.tip_button:hover{
     background-color: var(--light-grayish-cyan);
+    color: var(--very-dark-cyan);
+}
+
+.tip_button:focus {
+    background-color: var(--strong-cyan);
     color: var(--very-dark-cyan);
 }
 
@@ -195,4 +207,58 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 
 .reset_button:hover {
     background-color: var(--light-grayish-cyan);
+}
+
+@media (max-width: 680px) {
+    html {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 3.5rem;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .tip_buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0;
+    }
+
+    .first_column, .second_column {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 0;
+    }
+
+    .first_column {
+        margin-right: 0.5rem;
+    }
+
+    .second_column {
+        margin-left: 0.5rem;
+    }
+
+    .tip_button {
+        justify-content: center;
+        width: 10rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .total_price {
+        margin-bottom: 3rem;
+    }
 }
