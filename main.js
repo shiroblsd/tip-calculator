@@ -44,18 +44,20 @@ function calculate() {
     let bill = parseFloat(document.getElementById("bill").value);
     let peopleCount = parseInt(document.getElementById("peopleCount").value);
     let errorText = document.querySelector(".error_text");
-    
 
-    if (isNaN(bill) || isNaN(peopleCount) || peopleCount <= 0) {
+    if (isNaN(bill) || isNaN(peopleCount)) {
+        errorText.style.display = "block"; // Показать ошибку
         return;
     }
 
     if (peopleCount <= 0) {
         errorText.style.display = "block"; // Показать текст ошибки
+        return;
     } else {
         errorText.style.display = "none"; // Скрыть текст ошибки
     }
 
+    let tipPercent = 10; // Предположим, что значение чаевых фиксировано
     let tipAmount = (bill * tipPercent) / 100;
     let total = (bill + tipAmount) / peopleCount;
 

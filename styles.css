@@ -66,6 +66,7 @@ body {
 }
 
 .error_text {
+    display: none;
     color: red;
 }
 
