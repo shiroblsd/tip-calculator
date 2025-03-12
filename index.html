@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script defer src="./main.js"></script>
+  
+  <title>Frontend Mentor | Tip calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <img src="./images/logo.svg" class="logo" alt="logo"></img>
+  <div class="container">
+  <div class="buttons_container">
+    <div class="bill_string">
+  <p class="main_text">Bill</p>
+    <input type="number" placeholder="0" id="bill" class="bill_input">
+    </div>
+    <div class="tip">
+      <p class="main_text"> Select Tip % </p>
+   <div class="tip_buttons">
+    <div class="first_column">
+    <button class="tip_button" onclick="setTip(5)">5%</button>
+    <button class="tip_button" onclick="setTip(10)">10%</button>
+    <button class="tip_button" onclick="setTip(15)">15%</button>
+    </div>
+    <div class="second_column">
+    <button class="tip_button" onclick="setTip(25)">25%</button>
+    <button class="tip_button" onclick="setTip(50)">50%</button>
+    <button class="tip_button" id="customButton" onclick="setCustomTip()">Custom</button>
+    <input type="number" id="customTip" class="tip_input" style="display: none;" />
+
+    </div>
+    </div>
+    </div>
+    <div class="people_string">
+      <p class="main_text">Number of People</p>
+    <input type="number" placeholder="0" id="peopleCount" class="number_input">
+    </div>
+  </div>
+  <div class="output_container">
+    <div class="all_price">
+    <div class="tip_price">
+    <div class="tip_text">Tip Amount</br><p class="person">/ person</p></div>
+    <div class="number_tip">$0.00</div>
+    </div>
+    <div class="total_price">
+    <div class="total_text">Total</br><p class="person">/ person</p></div>
+    <div class="number_total">$0.00</div>
+    </div></div>
+
+  <button class="reset_button" onclick="calculate()">RESET</button>
+
+  </div>
+  </div>
+
+</body>
+</html>
